@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xml:th="http://www/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<form th:action="@{/pay}" th:object="${payload}" method="post">
+    <div class="form-row">
+        <input type="hidden" name="amount" value="200"/>
+        <input type="hidden" name="payment_method" value="card, mobilemoney,ussd">
+        <input type="hidden" name="country" value="KE"/>
+        <input type="hidden" name="currency" value="KSH"/>
+        <input type="hidden" name="email" value="hamsoace@gmail.com"/>
+        <input type="hidden" name="firstname" value="Hamso"/>
+        <input type="hidden" name="lastname" value="Ace"/>
+        <input type="hidden" name="phonenumber" value="+254715051497"/>
+    </div>
+    <input type="submit" value="Buy">
+</form>
+
+<script type="text/javascript" th:scr="${url}">
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event){
+    let payload = '[[${payload}]]';
+    payload = payload.replaceAll(/&quot;/g, '\\"');
+    payload = payload.replaceAll('\\', '');
+    var data = JSON.parse(payload);
+    FlutterwaveCheckout(data);
+    });
+</script>
+</body>
+</html>
