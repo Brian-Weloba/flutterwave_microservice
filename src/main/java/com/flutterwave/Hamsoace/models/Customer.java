@@ -1,4 +1,4 @@
-package com.flutterwave.Hamsoace;
+package com.flutterwave.Hamsoace.models;
 
 import com.google.gson.annotations.Expose;
 

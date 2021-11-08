@@ -1,8 +1,10 @@
-package com.flutterwave.Hamsoace;
+package com.flutterwave.Hamsoace.payment;
 
+import com.flutterwave.Hamsoace.models.Payload;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +13,7 @@ import java.security.MessageDigest;
 import java.util.Map;
 import java.util.UUID;
 
+@Service
 public class PaymentService {
     @Value("${flutterwave.public-key}")
     private String ravePublicKey;

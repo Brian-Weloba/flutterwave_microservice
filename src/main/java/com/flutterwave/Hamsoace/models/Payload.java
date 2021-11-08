@@ -1,5 +1,6 @@
-package com.flutterwave.Hamsoace;
+package com.flutterwave.Hamsoace.models;
 
+import com.flutterwave.Hamsoace.models.Customer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;

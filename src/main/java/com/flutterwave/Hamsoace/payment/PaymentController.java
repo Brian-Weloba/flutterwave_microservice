@@ -1,15 +1,15 @@
-package com.flutterwave.Hamsoace;
+package com.flutterwave.Hamsoace.payment;
 
+import com.flutterwave.Hamsoace.models.Payload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+@RestController
+@RequestMapping("api/v1")
 public class PaymentController {
     private final PaymentService paymentService;
 
@@ -18,7 +18,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @RequestMapping("/pay")
+    @GetMapping("/pay")
     public String pay(@ModelAttribute Payload payload, Model model, HttpServletRequest request) throws Exception{
         if (request.getMethod().contentEquals("GET")){
             return "redirect:";
@@ -33,5 +33,11 @@ public class PaymentController {
         Map<String, Object> transactionData =
                 paymentService.verifyTransaction(transactionId);
         return "callback";
+    }
+
+    //get-mapping to test the ui
+    @GetMapping("/test")
+    public String test(){
+        return "test";
     }
 }
