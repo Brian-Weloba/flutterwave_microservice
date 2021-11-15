@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api/v1")
 public class PaymentController {
     private final PaymentService paymentService;
+
 
     @Autowired
     public PaymentController(PaymentService paymentService){
