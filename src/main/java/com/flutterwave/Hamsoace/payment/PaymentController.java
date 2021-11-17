@@ -15,7 +15,6 @@ public class PaymentController {
     private final PaymentService paymentService;
     private final PayloadRepository repository;
 
-
     @Autowired
     public PaymentController(PaymentService paymentService, PayloadRepository repository) {
         this.paymentService = paymentService;
