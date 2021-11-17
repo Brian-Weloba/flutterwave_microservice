@@ -52,6 +52,9 @@ public class PaymentService {
 
     private void addRaveDetailsToPayload(Payload payload) {
         String txRef = UUID.randomUUID().toString();
+        payload.setAmount(payload.getAmount());
+        payload.setCurrency(payload.getCurrency());
+        payload.setPayment_method(payload.getPayment_method());
         payload.setPublic_key(ravePublicKey);
         payload.setTx_ref(txRef);
         payload.setCustomer(payload.getCustomer());
