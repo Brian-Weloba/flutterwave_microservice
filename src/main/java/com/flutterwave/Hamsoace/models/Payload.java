@@ -5,9 +5,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
+@Entity
 public class Payload implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
     @Expose
     private Customer customer;
     @Expose
@@ -19,13 +26,40 @@ public class Payload implements Serializable {
     @Expose
     private String description;
     @Expose
-    private String payment_method;
+    private String payment_options;
     @Expose
     private String public_key;
     @Expose
     private String tx_ref;
     @Expose
     private String redirect_url;
+    @Expose
+    private Customizations customizations;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getPayment_options() {
+        return payment_options;
+    }
+
+    public void setPayment_options(String payment_options) {
+        this.payment_options = payment_options;
+    }
+
+    public Customizations getCustomizations() {
+        return customizations;
+    }
+
+    public void setCustomizations(Customizations customizations) {
+        this.customizations = customizations;
+    }
+
 
     public Customer getCustomer() {
         return customer;
@@ -65,14 +99,6 @@ public class Payload implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPayment_method() {
-        return payment_method;
-    }
-
-    public void setPayment_method(String payment_method) {
-        this.payment_method = payment_method;
     }
 
     public String getPublic_key() {
