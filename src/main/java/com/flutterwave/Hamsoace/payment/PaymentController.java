@@ -29,10 +29,11 @@ public class PaymentController {
     }
 
 
+
     // get all from our rest api
     @GetMapping(value = "/get")
-    public String getProductList() {
-        return paymentService.getProductList();
+    public Map<String, Object> getProductList() {
+        return paymentService.getTransactions();
     }
 
     @GetMapping("/callback/{transaction_id}")

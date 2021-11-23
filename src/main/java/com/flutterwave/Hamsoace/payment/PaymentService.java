@@ -3,6 +3,7 @@ package com.flutterwave.Hamsoace.payment;
 import com.flutterwave.Hamsoace.models.Payload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class PaymentService {
     @Value("${flutterwave.secret-key}")
     private String raveSecretKey;
 
+    RestTemplate restTemplate = new RestTemplate();
+
+
 
     public  void initialize(Model model) throws Exception{
         model.addAttribute("url", "https://checkout.flutterwave/v3.js");
@@ -42,8 +46,7 @@ public class PaymentService {
         RestTemplate restTemplate = new RestTemplate();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>(headers);
-        return restTemplate.exchange("https://checkout.flutterwave/v3.js",
-                HttpMethod.GET, entity, String.class).getBody();
+        return restTemplate.exchange("https://checkout.flutterwave/v3.js", HttpMethod.GET, entity, String.class).getBody();
     }
 
     private String hashSHA256(String originalString) throws Exception{
