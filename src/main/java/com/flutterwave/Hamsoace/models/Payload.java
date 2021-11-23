@@ -133,7 +133,7 @@ public class Payload implements Serializable {
                 ", currency='" + currency + '\'' +
                 ", country='" + country + '\'' +
                 ", description='" + description + '\'' +
-                ", payment_method='" + payment_method + '\'' +
+                ", payment_options='" + payment_options + '\'' +
                 ", public_key='" + public_key + '\'' +
                 ", tx_ref='" + tx_ref + '\'' +
                 ", redirect_url='" + redirect_url + '\'' +

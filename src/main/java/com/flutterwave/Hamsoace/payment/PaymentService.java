@@ -73,7 +73,7 @@ public class PaymentService {
         String txRef = UUID.randomUUID().toString();
         payload.setAmount(payload.getAmount());
         payload.setCurrency(payload.getCurrency());
-        payload.setPayment_method(payload.getPayment_method());
+        payload.setPayment_options(payload.getPayment_options());
         payload.setPublic_key(ravePublicKey);
         payload.setTx_ref(txRef);
         payload.setCustomer(payload.getCustomer());
