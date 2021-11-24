@@ -12,6 +12,12 @@ public class Customizations implements Serializable {
     @Expose
     private String logo;
 
+    public Customizations(String title, String description, String logo) {
+        this.title = title;
+        this.description = description;
+        this.logo = logo;
+    }
+
     //generate getters and setters
     public String getTitle() {
         return title;
