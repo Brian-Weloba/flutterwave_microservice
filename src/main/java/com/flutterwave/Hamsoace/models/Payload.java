@@ -133,10 +133,17 @@ public class Payload implements Serializable {
     }
 
     @Override
-    public String toString(){
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create();
-        return gson.toJson(this);
+    public String toString() {
+        return "Payload{" +
+                "customer=" + customer +
+                ", amount='" + amount + '\'' +
+                ", currency='" + currency + '\'' +
+                ", country='" + country + '\'' +
+                ", description='" + description + '\'' +
+                ", payment_options='" + payment_options + '\'' +
+                ", public_key='" + public_key + '\'' +
+                ", tx_ref='" + tx_ref + '\'' +
+                ", redirect_url='" + redirect_url + '\'' +
+                '}';
     }
 }
