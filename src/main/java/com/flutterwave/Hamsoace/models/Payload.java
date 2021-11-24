@@ -30,11 +30,18 @@ public class Payload implements Serializable {
     @Expose
     private String public_key;
     @Expose
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String tx_ref;
     @Expose
     private String redirect_url;
     @Expose
     private Customizations customizations;
+
+    public Payload() {
+        this.tx_ref= UUID.randomUUID().toString();
+        Customizations custom = new Customizations("MyMoviesAfrica","Bring Cinema Home!","https://mymovies.africa/static/media/mma-logo.885180a6.png");
+        this.customizations = custom;
+    }
 
     public UUID getId() {
         return id;
