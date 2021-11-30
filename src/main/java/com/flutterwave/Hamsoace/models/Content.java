@@ -30,7 +30,7 @@ public class Content {
     private String estDiscount;
     private String pvodDiscount;
 
-    //note:At least a “no arguments constructor” is needed by a JSON processor.
+
     public Content() {
     }
 
@@ -250,4 +250,20 @@ public class Content {
         this.pvodDiscount = pvodDiscount;
     }
 
+    public String getDiscountedPrice(String tx_type) {
+        int price;
+        if ("rental".equals(tx_type)) {
+            price = Integer.parseInt(this.getRental_price()) - Integer.parseInt(this.getRentalDiscount());
+            return String.valueOf(price);
+        } else if ("pvod".equals(tx_type)) {
+            price = Integer.parseInt(this.getPvod_price()) - Integer.parseInt(this.getPvodDiscount());
+            return String.valueOf(price);
+        } else if ("est".equals(tx_type)) {
+            price = Integer.parseInt(this.getEst_price()) - Integer.parseInt(this.getEstDiscount());
+            return String.valueOf(price);
+        }else {
+            return "0";
+        }
+
+    }
 }

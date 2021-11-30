@@ -52,7 +52,7 @@ public class PaymentService {
 
     private void addRaveDetailsToPayload(Payload payload) {
         String txRef = UUID.randomUUID().toString();
-        payload.setPublic_key(ravePublicKey);
+//        payload.setPublic_key(ravePublicKey);
         payload.setTx_ref(txRef);
         payload.setCustomer(payload.getCustomer());
         payload.setRedirect_url("/callback");
@@ -65,7 +65,7 @@ public class PaymentService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(raveSecretKey);
-        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+        HttpEntity<String> httpEntity = new HttpEntity<>("body",headers);
         ParameterizedTypeReference<Map<String, Object>> typeRef = new ParameterizedTypeReference<>(){
 
         };

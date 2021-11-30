@@ -3,6 +3,7 @@ package com.flutterwave.Hamsoace.backend;
 import com.flutterwave.Hamsoace.models.Content;
 import com.flutterwave.Hamsoace.models.ContentRef;
 import com.flutterwave.Hamsoace.models.Customer;
+import com.flutterwave.Hamsoace.models.User;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,5 +21,5 @@ public interface ApiService {
 
     @PostMapping("api/v1/users/customerid")
     @ResponseBody
-    Customer getUsersByEmail(@RequestParam String email);
+    User getUsersByEmail(@RequestParam String email);
 }

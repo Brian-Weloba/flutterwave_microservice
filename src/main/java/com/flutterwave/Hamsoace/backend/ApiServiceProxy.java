@@ -2,6 +2,8 @@ package com.flutterwave.Hamsoace.backend;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(name="backend-api-service",url = "https://1f19-102-23-104-196.ngrok.io")
+import static com.flutterwave.Hamsoace.utils.URLs.BASE_URL;
+
+@FeignClient(name="backend-api-service",url = BASE_URL)
 public interface ApiServiceProxy extends ApiService {
 }
