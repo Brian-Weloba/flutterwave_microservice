@@ -5,11 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Status: '+${status}">Placeholder status</p><br>
-<p th:text="'Error: '+${message}">Message placeholder</p>
-<button id="retry">Retry Payment</button>
-<button>Cancel</button>
+<div class="container">
+    <div class="status">
+        <p th:text="'Status: '+${status}">Payment Cancelled.</p><br>
+    </div>
+</div>
+<div class="container">
+    <div class="message">
+        <p th:text="'Error: '+${message}">Your payment has been cancelled and you will not be charged. </br>If you wish to retry press the retry button.</p>
+    </div>
+    <div class="buttons">
+        <button id="retry">Retry Payment</button>
+        <button>Cancel</button>
+    </div>
+
+</div>
+
 </body>
+
+
 
 <script th:inline="javascript">
     var ref = [[${tx_ref}]];
