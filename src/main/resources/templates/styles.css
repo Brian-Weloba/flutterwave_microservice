@@ -1,0 +1,21 @@
+*{
+font-family: Sans-serif, Helvetica, Arial;
+}
+
+
+.status{
+text-align: center;
+}
+
+.button, .message{
+float:left;
+margin:10px;
+padding-left:100px;
+}
+
+.image{
+float:right;
+}
+
+
+

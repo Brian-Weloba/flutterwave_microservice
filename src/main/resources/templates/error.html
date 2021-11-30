@@ -3,21 +3,32 @@
 <head>
     <title>Payment Error</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="body_image">
 <div class="container">
     <div class="status">
-        <p th:text="'Status: '+${status}">Payment Cancelled.</p><br>
+        <h1 th:text="'Status: '+${status}">Payment Cancelled</h1><br>
     </div>
 </div>
-<div class="container">
+<div class="body_container">
     <div class="message">
         <p th:text="'Error: '+${message}">Your payment has been cancelled and you will not be charged. </br>If you wish to retry press the retry button.</p>
     </div>
+
+    <div class="image">
+        <div id="img">
+            <img src="cancel.png"/>
+        </div>
+    </div>
+
     <div class="buttons">
         <button id="retry">Retry Payment</button>
         <button>Cancel</button>
     </div>
+
+</div>
 
 </div>
 
