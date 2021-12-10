@@ -2,7 +2,6 @@ package com.mctv.flutterwave.controllers;
 
 import com.mctv.flutterwave.feignclient.FlutterwaveServiceProxy;
 import com.mctv.flutterwave.models.Payload;
-import com.mctv.flutterwave.models.Response;
 import com.mctv.flutterwave.repositories.PayloadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -23,19 +22,18 @@ import static com.mctv.flutterwave.utils.URLs.MICROSERVICE_URL;
 @Controller
 @EnableFeignClients(basePackageClasses = FlutterwaveServiceProxy.class)
 public class ModelAndViewController {
-    private FlutterwaveServiceProxy proxy;
-    private PayloadRepository repo;
+    private final FlutterwaveController controller;
+    private final PayloadRepository repo;
 
     /**
-     * @param proxy Injected proxy
-     * @param repo  Injected repository
-     *              <p>
-     *              The constructor for the ModelAndViewController
+     * @param repo          Injected repository
+     *                      <p>
+     * @param controller    Inject the flutterwave controller
      */
     @Autowired
-    public ModelAndViewController(FlutterwaveServiceProxy proxy, PayloadRepository repo) {
-        this.proxy = proxy;
+    public ModelAndViewController(PayloadRepository repo, FlutterwaveController controller) {
         this.repo = repo;
+        this.controller = controller;
     }
 
     /**
@@ -68,8 +66,6 @@ public class ModelAndViewController {
     @GetMapping("/retry-payment")
     public ModelAndView retryPayment(@RequestParam String ref) {
         Payload payload = repo.findByRef(ref);
-//        payload.setRedirect_url(MICROSERVICE_URL + "/payment-success");
-        Response response = proxy.createPayment(payload);
-        return new ModelAndView("redirect:" + response.getData().getLink());
+        return controller.makePayment(payload);
     }
 }

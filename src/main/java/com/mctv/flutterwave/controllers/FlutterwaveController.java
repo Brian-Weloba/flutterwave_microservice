@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Objects;
-
 import static com.mctv.flutterwave.utils.URLs.MICROSERVICE_URL;
 
 /**
- * @author brianweloba
+ * @author Brian Weloba
  * @author Hamisi Andale
  * <p>
  * Controller for the Flutterwave payment microservice.Used to handle the payment flow.
@@ -58,6 +56,10 @@ public class FlutterwaveController implements FlutterwaveService {
     @GetMapping("/payment")
     public ModelAndView payment(Content content, Customer customer, String transactionType) {
         Payload payload = getPayload(content, customer, transactionType);
+        return makePayment(payload);
+    }
+
+    public ModelAndView makePayment(Payload payload) {
         repo.save(payload);
         Response paymentObj = proxy.createPayment(payload);
         return new ModelAndView("redirect:" + paymentObj.getData().getLink());
@@ -161,12 +163,11 @@ public class FlutterwaveController implements FlutterwaveService {
      */
     private Payload getPayload(Content content, Customer customer, String transactionType) {
         Payload payload = new Payload();
-        //todo:if est or rental or pvod
+        //if est or rental or pvod
         if (content.getIsDiscountActive().equals("1")) {
-            if (!Objects.equals(content.getDiscountedPrice(transactionType), "0")) {
+            if (content.getDiscountedPrice(transactionType) != "0") {
                 payload.setAmount(content.getDiscountedPrice(transactionType));
             }
-
         } else {
             if ("est".equals(transactionType)) {
                 payload.setAmount(content.getEst_price());

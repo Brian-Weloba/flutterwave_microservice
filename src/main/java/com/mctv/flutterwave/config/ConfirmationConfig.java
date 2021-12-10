@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @author brianweloba
- * @author hamisiandlae
+ * @author Brian Weloba
+ * @author Hamisi Andale
  * <p>
  * This class is used to configure the request interceptor for the confirmation api.
  * @see com.mctv.flutterwave.feignclient.ConfirmationServiceProxy

@@ -2,7 +2,6 @@ package com.mctv.flutterwave.models;
 
 import com.google.gson.annotations.Expose;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;

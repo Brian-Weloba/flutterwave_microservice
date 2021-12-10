@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @author brianweloba
- * @author hamisiandale
+* @author Brian Weloba
+ *@author Hamisi Andale
  * <p>
  * 1. This class is the controller for the API.
  * 2. It is responsible for handling all the requests from the front end.
@@ -79,5 +79,4 @@ public class ApiController implements ApiService {
     public User getUsersByEmail(@RequestParam String email) {
         return apiServiceProxy.getUsersByEmail(email);
     }
-
 }
