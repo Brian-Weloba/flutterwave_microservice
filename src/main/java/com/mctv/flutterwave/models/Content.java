@@ -645,19 +645,22 @@ public class Content {
      */
     public String getDiscountedPrice(String tx_type) {
 
-        int price;
+        float discount;
+        float price = 0;
         if ("rental".equals(tx_type)) {
-            price = Integer.parseInt(this.getRental_price()) - Integer.parseInt(this.getRentalDiscount());
-            return String.valueOf(price);
+            discount =  Integer.parseInt(this.getRentalDiscount());
+            price = Integer.parseInt(this.getRental_price())*(100-discount)/100;
         } else if ("pvod".equals(tx_type)) {
-            price = Integer.parseInt(this.getPvod_price()) - Integer.parseInt(this.getPvodDiscount());
-            return String.valueOf(price);
+            discount = Integer.parseInt(this.getPvodDiscount());
+            price = Integer.parseInt(this.getPvod_price())*(100-discount)/100;
         } else if ("est".equals(tx_type)) {
-            price = Integer.parseInt(this.getEst_price()) - Integer.parseInt(this.getEstDiscount());
-            return String.valueOf(price);
+            discount =  Integer.parseInt(this.getEstDiscount());
+            price = Integer.parseInt(this.getEst_price())*(100-discount)/100;
         } else {
             return "0";
         }
+
+        return String.valueOf(price);
 
     }
 }
